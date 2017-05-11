@@ -1,0 +1,49 @@
+{
+  "name": "express-naked-redirect",
+  "version": "0.1.0",
+  "description": "expressNakedRedirect is a middleware for Express that redirects naked(root domain) request to www or its reverse.",
+  "contributors": [
+    {
+      "name": "GONZO",
+      "email": "oss@dp.farm"
+    }
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec --bail --check-leaks test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/why2pac/express-naked-redirect.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "redirect",
+    "naked",
+    "domain",
+    "www"
+  ],
+  "dependencies": {
+      "parse-domain": "^1.1.0"
+  },
+  "devDependencies": {
+      "express": "^4.15.2",
+      "mocha": "^3.3.0",
+      "supertest": "^3.0.0"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "author": "GONZO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/why2pac/express-naked-redirect/issues"
+  },
+  "homepage": "https://github.com/why2pac/express-naked-redirect#readme"
+}
