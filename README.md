@@ -1,8 +1,8 @@
 express-naked-redirect
 ======================
 
-[![NPM Version][https://img.shields.io/npm/v/express-naked-redirect.svg]][https://npmjs.org/package/express-naked-redirect]
-[![NPM Downloads][https://img.shields.io/npm/dm/express-naked-redirect.svg]][https://npmjs.org/package/express-naked-redirect]
+[![NPM Version](https://img.shields.io/npm/v/express-naked-redirect.svg)](https://npmjs.org/package/express-naked-redirect)
+[![NPM Downloads](https://img.shields.io/npm/dm/express-naked-redirect.svg)](https://npmjs.org/package/express-naked-redirect)
 [![Dependency Status](https://david-dm.org/why2pac/express-naked-redirect.svg)](https://david-dm.org/why2pac/express-naked-redirect)
 [![Linux Build](https://img.shields.io/travis/why2pac/express-naked-redirect/master.svg?label=linux)](https://travis-ci.org/why2pac/express-naked-redirect)
 [![Linux Build](https://img.shields.io/travis/why2pac/express-naked-redirect/master.svg?label=linux)](https://travis-ci.org/why2pac/express-naked-redirect)
