@@ -25,21 +25,24 @@ var subdomainParser = function() {
   }
 }();
 
-module.exports = function(rev, sub) {
+module.exports = function(rev, sub, status) {
   return function(req, res, next) {
     if (typeof(rev) === 'string' && sub === undefined) {
       sub = rev;
       rev = false;
+    }
+    if (status === undefined) {
+      status = 302;
     }
 
     var domain = subdomainParser.get(req.hostname);
     sub = sub || 'www';
 
     if (domain[0] == '' && !rev) {
-      res.redirect(req.protocol + '://' + sub + '.' + domain[1] + req.url);
+      res.redirect(status, req.protocol + '://' + sub + '.' + domain[1] + req.url);
       return;
     } else if (domain[0] == sub && rev) {
-      res.redirect(req.protocol + '://' + domain[1] + req.url);
+      res.redirect(status, req.protocol + '://' + domain[1] + req.url);
       return;
     }
 

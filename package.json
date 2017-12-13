@@ -25,12 +25,12 @@
     "www"
   ],
   "dependencies": {
-      "parse-domain": "^1.1.0"
+    "parse-domain": "^1.1.0"
   },
   "devDependencies": {
-      "express": "^4.15.2",
-      "mocha": "^3.3.0",
-      "supertest": "^3.0.0"
+    "express": "^4.15.2",
+    "mocha": "^3.3.0",
+    "supertest": "^3.0.0"
   },
   "files": [
     "LICENSE",
