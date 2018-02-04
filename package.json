@@ -30,7 +30,8 @@
   "devDependencies": {
     "express": "^4.15.2",
     "mocha": "^4.0.1",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "url-pattern": "^1.0.3"
   },
   "files": [
     "LICENSE",

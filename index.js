@@ -38,7 +38,43 @@ module.exports = function(reverse, subDomain, status) {
     }
   }
 
+  if (options.except) {
+    if (typeof options.except === 'string') {
+      options.except = [options.except];
+    }
+
+    // Assertion
+    if (typeof options.except.length !== 'number') {
+      throw new Error('Except option must be set with an array or string.');
+    }
+
+    var UrlPattern;
+
+    try {
+      UrlPattern = require('url-pattern');
+    }
+    catch (e) {
+      console.error(e)
+      throw new Error('The third party module `url-pattern` is required.');
+    }
+
+    for (var i = 0; i < options.except.length; i++) {
+      options.except[i] = new UrlPattern(options.except[i]);
+    }
+  }
+
   return function(req, res, next) {
+    var domain = subdomainParser.get(req.hostname);
+    options.subDomain = options.subDomain || 'www';
+
+    if (options.except) {
+      for (var i = 0; i < options.except.length; i++) {
+        if (options.except[i].match(req.url)) {
+          return next();
+        }
+      }
+    }
+
     if (typeof(options.reverse) === 'string' && options.subDomain === undefined) {
       options.subDomain = options.reverse;
       options.reverse = false;
@@ -46,9 +82,6 @@ module.exports = function(reverse, subDomain, status) {
     if (options.status === undefined) {
       options.status = 302;
     }
-
-    var domain = subdomainParser.get(req.hostname);
-    options.subDomain = options.subDomain || 'www';
 
     if (domain[0] == '' && !options.reverse) {
       res.redirect(options.status, req.protocol + '://' + options.subDomain + '.' + domain[1] + req.url);

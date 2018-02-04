@@ -81,6 +81,21 @@ app.use(require('express-naked-redirect')({
 }))
 ```
 
+### Do not redirect specific paths
+
+If you do not want to redirect specific paths, add `except` option. **It requires [`url-pattern`](https://www.npmjs.com/package/url-pattern) library separately.**
+
+```Javascript
+app.use(require('express-naked-redirect')({
+  reverse: true,
+  subDomain: 'sub',
+  except: [
+    '/foo/bar',
+    '/foo/bar/:id'
+  ]
+}))
+```
+
 ## License
 
 [MIT License](http://www.opensource.org/licenses/mit-license.php)
