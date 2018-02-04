@@ -25,24 +25,36 @@ var subdomainParser = function() {
   }
 }();
 
-module.exports = function(rev, sub, status) {
-  return function(req, res, next) {
-    if (typeof(rev) === 'string' && sub === undefined) {
-      sub = rev;
-      rev = false;
+module.exports = function(reverse, subDomain, status) {
+  var options;
+
+  if (arguments.length === 1 && typeof arguments[0] === 'object') {
+    options = arguments[0];
+  } else {
+    options = {
+      reverse: reverse,
+      subDomain: subDomain,
+      status: status
     }
-    if (status === undefined) {
-      status = 302;
+  }
+
+  return function(req, res, next) {
+    if (typeof(options.reverse) === 'string' && options.subDomain === undefined) {
+      options.subDomain = options.reverse;
+      options.reverse = false;
+    }
+    if (options.status === undefined) {
+      options.status = 302;
     }
 
     var domain = subdomainParser.get(req.hostname);
-    sub = sub || 'www';
+    options.subDomain = options.subDomain || 'www';
 
-    if (domain[0] == '' && !rev) {
-      res.redirect(status, req.protocol + '://' + sub + '.' + domain[1] + req.url);
+    if (domain[0] == '' && !options.reverse) {
+      res.redirect(options.status, req.protocol + '://' + options.subDomain + '.' + domain[1] + req.url);
       return;
-    } else if (domain[0] == sub && rev) {
-      res.redirect(status, req.protocol + '://' + domain[1] + req.url);
+    } else if (domain[0] == options.subDomain && options.reverse) {
+      res.redirect(options.status, req.protocol + '://' + domain[1] + req.url);
       return;
     }
 

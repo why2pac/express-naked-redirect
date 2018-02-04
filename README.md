@@ -40,6 +40,14 @@ It allows you to redirect http://www.domain.tld to http://domain.tld
 app.use(require('express-naked-redirect')(true))
 ```
 
+or
+
+```Javascript
+app.use(require('express-naked-redirect')({
+  reverse: true
+}))
+```
+
 ### Redirect naked to specific subdomain
 
 It allows you to redirect http://domain.tld to http://sub.domain.tld
@@ -48,12 +56,29 @@ It allows you to redirect http://domain.tld to http://sub.domain.tld
 app.use(require('express-naked-redirect')('sub'))
 ```
 
+or
+
+```Javascript
+app.use(require('express-naked-redirect')({
+  subDomain: 'sub'
+}))
+```
+
 ### Redirect specific subdomain to naked
 
 It allows you to redirect http://sub.domain.tld to http://domain.tld
 
 ```Javascript
 app.use(require('express-naked-redirect')(true, 'sub'))
+```
+
+or
+
+```Javascript
+app.use(require('express-naked-redirect')({
+  reverse: true,
+  subDomain: 'sub'
+}))
 ```
 
 ## License
