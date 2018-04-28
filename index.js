@@ -83,11 +83,28 @@ module.exports = function(reverse, subDomain, status) {
       options.status = 302;
     }
 
+    if (typeof(options.protocol) === 'string') {
+      options.protocol = options.protocol;
+    }
+    else if (typeof(options.https) === 'boolean' && options.https) {
+      options.protocol = 'https';
+    }
+    else {
+      options.protocol = req.protocol;
+    }
+
+    var redirectTo = null;
+
     if (domain[0] == '' && !options.reverse) {
-      res.redirect(options.status, req.protocol + '://' + options.subDomain + '.' + domain[1] + req.url);
-      return;
+      redirectTo = `${options.protocol}://${options.subDomain}.${domain[1]}${req.url}`;
     } else if (domain[0] == options.subDomain && options.reverse) {
-      res.redirect(options.status, req.protocol + '://' + domain[1] + req.url);
+        redirectTo = `${options.protocol}://${domain[1]}${req.url}`;
+    } else if (options.protocol !== req.protocol) {
+      redirectTo = `${options.protocol}://${req.hostname}${req.url}`;
+    }
+
+    if (redirectTo !== null) {
+      res.redirect(options.status, redirectTo);
       return;
     }
 
