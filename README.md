@@ -21,6 +21,7 @@ $ npm install express-naked-redirect --save
 * Redirect **www** request **to** **naked**(root domain, non-www).
 * Redirect **naked**(root domain, non-www) request **to** **specific subdomain**.
 * Redirect **specific subdomain** request **to** **naked**(root domain, non-www).
+* Redirect **http** request **to** **https**(or specific protocol).
 
 ## Usage
 
@@ -78,6 +79,26 @@ or
 app.use(require('express-naked-redirect')({
   reverse: true,
   subDomain: 'sub'
+}))
+```
+
+### Redirect http to https
+
+It allows you to redirect http://domain.tld to https://www.domain.tld
+
+```Javascript
+app.use(require('express-naked-redirect')({
+  subDomain: 'www',
+  https: true
+}))
+```
+
+or
+
+```Javascript
+app.use(require('express-naked-redirect')({
+  subDomain: 'www',
+  protocol: 'https'
 }))
 ```
 
