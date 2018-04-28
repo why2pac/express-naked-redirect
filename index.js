@@ -14,7 +14,7 @@ var subdomainParser = function() {
       // Cache, Touch
       if (parsedDomain[hostname] == undefined) {
         try {
-          let ps = parseDomain(hostname);
+          var ps = parseDomain(hostname);
           parsedDomain[hostname] = [ps.subdomain, ps.domain + '.' + ps.tld];
         } catch (e) {
           parsedDomain[hostname] = [null, null];
@@ -26,7 +26,7 @@ var subdomainParser = function() {
 }();
 
 module.exports = function(reverse, subDomain, status) {
-  let options;
+  var options;
 
   if (arguments.length === 1 && typeof arguments[0] === 'object') {
     options = arguments[0];
@@ -48,7 +48,7 @@ module.exports = function(reverse, subDomain, status) {
       throw new Error('Except option must be set with an array or string.');
     }
 
-    let UrlPattern;
+    var UrlPattern;
 
     try {
       UrlPattern = require('url-pattern');
@@ -58,17 +58,17 @@ module.exports = function(reverse, subDomain, status) {
       throw new Error('The third party module `url-pattern` is required.');
     }
 
-    for (let i = 0; i < options.except.length; i++) {
+    for (var i = 0; i < options.except.length; i++) {
       options.except[i] = new UrlPattern(options.except[i]);
     }
   }
 
   return function(req, res, next) {
-    let domain = subdomainParser.get(req.hostname);
+    var domain = subdomainParser.get(req.hostname);
     options.subDomain = options.subDomain || 'www';
 
     if (options.except) {
-      for (let i = 0; i < options.except.length; i++) {
+      for (var i = 0; i < options.except.length; i++) {
         if (options.except[i].match(req.url)) {
           return next();
         }
