@@ -10,7 +10,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec --bail --check-leaks test.js",
+    "test": "standard && mocha --reporter spec --bail --check-leaks test.js",
     "lint": "standard",
     "lintfix": "standard --fix",
     "lintmon": "./node_modules/nodemon/bin/nodemon.js --exec './node_modules/standard/bin/cmd.js'"
