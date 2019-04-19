@@ -82,7 +82,7 @@ module.exports = function (reverse, subDomain, status) {
     }
 
     if (typeof (options.protocol) === 'string') {
-      options.protocol = options.protocol
+      options.protocol = options.protocol // eslint-disable-line
     } else if (typeof (options.https) === 'boolean' && options.https) {
       options.protocol = 'https'
     } else {
