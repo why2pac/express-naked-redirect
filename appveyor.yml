@@ -1,16 +1,23 @@
 environment:
   matrix:
-    - nodejs_version: "6"
-    - nodejs_version: "7"
-    - nodejs_version: "8"
-    - nodejs_version: "9"
+    - nodejs_version: "12"
+    - nodejs_version: "11"
     - nodejs_version: "10"
+    - nodejs_version: "9"
+    - nodejs_version: "8"
+platform:
+  - x86
+  - x64
+services:
+  - mysql
 cache:
   - node_modules
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version) $env:PLATFORM
   - if exist node_modules npm prune
   - if exist node_modules npm rebuild
+  - npm -v
+  - node -v
   - npm install
 build: off
 test_script:
