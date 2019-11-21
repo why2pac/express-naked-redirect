@@ -28,12 +28,12 @@
     "www"
   ],
   "dependencies": {
-    "parse-domain": "^2.3.2"
+    "parse-domain": "^2.3.4"
   },
   "devDependencies": {
     "express": "^4.17.1",
-    "mocha": "^6.2.0",
-    "standard": "^14.0.2",
+    "mocha": "^6.2.2",
+    "standard": "^14.3.1",
     "supertest": "^4.0.2",
     "url-pattern": "^1.0.3"
   },
