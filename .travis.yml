@@ -8,10 +8,6 @@ node_js:
   - "11"
   - "12"
 sudo: false
-before_install:
-  # Update Node.js modules
-  - "test ! -d node_modules || npm prune"
-  - "test ! -d node_modules || npm rebuild"
 script:
   # Run test script, depending on istanbul install
   - "test ! -z $(npm -ps ls istanbul) || npm test"
