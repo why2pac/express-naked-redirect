@@ -5,7 +5,7 @@
  */
 
 var subdomainParser = (function () {
-  const parseDomain = require('parse-domain')
+  const parseDomain = require('parse-domain/lib/parseDomain')
   const parsedDomain = {}
 
   return {
