@@ -28,7 +28,7 @@
     "www"
   ],
   "dependencies": {
-    "parse-domain": "github:why2pac/parse-domain"
+    "parse-domain": "^3.0.0-beta.2"
   },
   "devDependencies": {
     "express": "^4.17.1",

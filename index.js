@@ -5,7 +5,7 @@
  */
 
 var subdomainParser = (function () {
-  const parseDomain = require('parse-domain/lib/parseDomain')
+  const { parseDomain } = require('parse-domain/build-cjs/src/parse-domain')
   const parsedDomain = {}
 
   return {
@@ -14,7 +14,7 @@ var subdomainParser = (function () {
       if (parsedDomain[hostname] === undefined) {
         try {
           var ps = parseDomain(hostname)
-          parsedDomain[hostname] = [ps.subdomain, ps.domain + '.' + ps.tld]
+          parsedDomain[hostname] = [ps.subDomains.join('.'), ps.domain + '.' + ps.topLevelDomains.join('.')]
         } catch (e) {
           parsedDomain[hostname] = [null, null]
         }

@@ -53,4 +53,12 @@ describe('express-naked-redirect', function () {
   test('domain.com', 'sub.domain.com', 'http', 'https', { protocol: 'https', subDomain: 'sub' }, true, 200)
   test('sub.domain.com', 'sub.domain.com', 'http', 'https', { protocol: 'https' }, true, 200)
   test('sub.domain.com', 'sub.domain.com', 'http', 'https', { https: true }, true, 200)
+
+  test('domain.co.kr', 'sub.domain.co.kr', 'http', 'https', { protocol: 'https', subDomain: 'sub' }, true, 200)
+  test('sub.domain.co.kr', 'sub.domain.co.kr', 'http', 'https', { protocol: 'https' }, true, 200)
+  test('sub.domain.co.kr', 'sub.domain.co.kr', 'http', 'https', { https: true }, true, 200)
+
+  test('domain.co.kr', 'sub2.sub1.domain.co.kr', 'http', 'https', { protocol: 'https', subDomain: 'sub2.sub1' }, true, 200)
+  test('sub2.sub1.domain.co.kr', 'sub2.sub1.domain.co.kr', 'http', 'https', { protocol: 'https' }, true, 200)
+  test('sub2.sub1.domain.co.kr', 'sub2.sub1.domain.co.kr', 'http', 'https', { https: true }, true, 200)
 })
