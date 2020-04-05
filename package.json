@@ -28,7 +28,7 @@
     "www"
   ],
   "dependencies": {
-    "parse-domain": "^2.3.4"
+    "parse-domain": "why2pac/parse-domain"
   },
   "devDependencies": {
     "express": "^4.17.1",
