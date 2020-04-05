@@ -1,6 +1,6 @@
 {
   "name": "express-naked-redirect",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "expressNakedRedirect is a middleware for Express that redirects naked(root domain) request to www or its reverse.",
   "contributors": [
     {
