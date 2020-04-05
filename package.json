@@ -2,10 +2,12 @@
   "name": "express-naked-redirect",
   "version": "0.1.5",
   "description": "expressNakedRedirect is a middleware for Express that redirects naked(root domain) request to www or its reverse.",
-  "contributors": [{
-    "name": "GONZO",
-    "email": "oss@dp.farm"
-  }],
+  "contributors": [
+    {
+      "name": "GONZO",
+      "email": "oss@dp.farm"
+    }
+  ],
   "main": "index.js",
   "scripts": {
     "test": "standard && mocha --reporter spec --bail --check-leaks test.js",
@@ -30,7 +32,7 @@
   },
   "devDependencies": {
     "express": "^4.17.1",
-    "mocha": "^7.1.0",
+    "mocha": "^7.1.1",
     "standard": "^14.3.3",
     "supertest": "^4.0.2",
     "url-pattern": "^1.0.3"
