@@ -5,7 +5,7 @@
  */
 
 var subdomainParser = (function () {
-  const { parseDomain } = require('parse-domain/build-cjs/src/parse-domain')
+  const { parseDomain } = require('parse-domain')
   const parsedDomain = {}
 
   return {
