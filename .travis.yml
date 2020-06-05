@@ -7,5 +7,4 @@ node_js:
   - "12"
 sudo: false
 script:
-  # Run test script, depending on istanbul install
-  - "test ! -z $(npm -ps ls istanbul) || npm test"
+  - "npm test"
