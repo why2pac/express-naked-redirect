@@ -2,10 +2,10 @@ const express = require('express')
 const supertest = require('supertest')
 const nakedRedirect = require('./index')
 
-var test = function (original, redirect, protocolFrom, protocolTo, opts, bypass, expectCode, willBeIgnored) {
+const test = function (original, redirect, protocolFrom, protocolTo, opts, bypass, expectCode, willBeIgnored) {
   const status = opts.status ? opts.status : 302
   it(`should redirect ${protocolFrom}://${original} to ${protocolTo}://${redirect} with ${status} status code`, function (done) {
-    var app = express()
+    const app = express()
 
     if (bypass) {
       app.use(nakedRedirect(opts))
@@ -17,11 +17,10 @@ var test = function (original, redirect, protocolFrom, protocolTo, opts, bypass,
       res.status(200).send(`${req.protocol}://${req.hostname}`)
     })
 
-    var expPrefix = status === 301 ? 'Moved Permanently.' : 'Found.'
-    var expConcat = 'Redirecting to'
-    var expUri = `${protocolTo}://${redirect}/test`
-
-    var expected = `${expPrefix} ${expConcat} ${expUri}`
+    const expPrefix = status === 301 ? 'Moved Permanently.' : 'Found.'
+    const expConcat = 'Redirecting to'
+    const expUri = `${protocolTo}://${redirect}/test`
+    let expected = `${expPrefix} ${expConcat} ${expUri}`
 
     if (willBeIgnored) {
       expected = `${protocolFrom}://${original}`
